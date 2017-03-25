@@ -37,7 +37,6 @@ public class MRF {
      */
     public double fx(double x){
                //x^3 - 2x^2 + 3x -8 
-               String funcion="x^3 - 2x^2 + 3x +54";
            net.objecthunter.exp4j.Expression e = new ExpressionBuilder(funcion)
                 .variables("x")
                 .build()
@@ -123,11 +122,25 @@ public class MRF {
         
     public static void main(String[] args){
         String Funcion="";
+        double inicial, fin, error;
+        int iteracion;
        Scanner sc = new Scanner(System.in);  //crear un objeto Scanner
-        System.out.println("Escriba funcion");
+        System.out.println("Escriba funcion:");
        Funcion = sc.nextLine(); 
-        MRF mrf = new MRF(Funcion,-6,-2,10,0.01);
+        System.out.println("Escriba Rango inicial");
+       inicial = Double.parseDouble(sc.nextLine());
+        System.out.println("Escriba Rango final");
+      fin = Double.parseDouble(sc.nextLine());
+      System.out.println("Escriba Valor del error");
+      error = Double.parseDouble(sc.nextLine());
+      System.out.println("Escriba El numero de ietraciones");
+      iteracion = Integer.parseInt(sc.nextLine());
+       if(Funcion.length()>0){
+        MRF mrf = new MRF(Funcion,inicial,fin,iteracion,error);
         String res = mrf.resolver();
-        System.out.println(res);
+        System.out.println(res);}
+       else{
+           System.out.println("No se pudo ejecutar la aplicacion porque faltan datos importantes ");
+       }
     }
 }
