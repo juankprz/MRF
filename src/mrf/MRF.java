@@ -7,6 +7,7 @@ package mrf;
 
 import java.beans.Expression;
 import java.math.BigDecimal;
+import java.util.Scanner;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
 /**
@@ -57,7 +58,7 @@ public class MRF {
      */
     
     public String resolver(){
-        
+        //numDec mumero despues del punto
         int numDec=5;
         double x3, y3;
         double xp=inicial;
@@ -122,7 +123,9 @@ public class MRF {
         
     public static void main(String[] args){
         String Funcion="";
-        
+       Scanner sc = new Scanner(System.in);  //crear un objeto Scanner
+        System.out.println("Escriba funcion");
+       Funcion = sc.nextLine(); 
         MRF mrf = new MRF(Funcion,-6,-2,10,0.01);
         String res = mrf.resolver();
         System.out.println(res);
