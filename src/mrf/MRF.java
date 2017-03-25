@@ -5,14 +5,16 @@
  */
 package mrf;
 
+import java.beans.Expression;
 import java.math.BigDecimal;
+import net.objecthunter.exp4j.ExpressionBuilder;
 
 /**
  *
  * @author JUAN
  */
-public class Regula_Falsi {
-       public Regula_Falsi(){}
+public class MRF {
+       public MRF(){}
     
     /**
      * Función a resolver
@@ -20,8 +22,15 @@ public class Regula_Falsi {
      * @return double
      */
     public double fx(double x){
-               //x^3 - 2x^2 + 3x -8        
-        return Math.pow(x, 4) - 3*Math.pow(x, 3) + 3*x - 15; 
+               //x^3 - 2x^2 + 3x -8 
+               String funcion="x^3 - 2x^2 + 3x -8";
+           net.objecthunter.exp4j.Expression e = new ExpressionBuilder(funcion)
+                .variables("x")
+                .build()
+                .setVariable("x",x);
+    
+        double result = e.evaluate();
+           return result;
     }
     
     /**
@@ -45,7 +54,7 @@ public class Regula_Falsi {
         
         
         for(int i=1; i<=iterations;i++){            
-            System.out.println("Iteración #"+i);
+            System.out.println("Iteración N°"+i);
             if ( (y2-y1) == 0 ){
                System.err.println("Error: no converge x=NaN; iteración="+i);
                return null;
@@ -57,13 +66,15 @@ public class Regula_Falsi {
             
             System.out.println("Error |"+round(xp,numDec)+"/"+round(x3,numDec)+"-1|<"+round(err,numDec)  + "  " + (Math.abs(xp/x3-1)<err));
             System.out.println("Error |"+Math.abs(xp/x3-1)+"|");
+             System.out.println("-----------------------------------------------------------------");
             if (Math.abs(xp/x3-1)<err){                
                 System.out.println(round(Math.abs(xp/x3-1),numDec)+"<"+round(err,numDec) + " -> termina programa");
                 return "Iteración:" + i + " Valor x=" + String.valueOf(x3);
               
             }
-            y3 = fx(x3); 
             
+            y3 = fx(x3); 
+           
             System.out.println(" y1 = " + round(y1,numDec));
             System.out.println(" y3 = fx(x3) = fx("+round(x3,numDec)+") = " + round(y3,numDec));
             System.out.println(" y1*y3 < 0 " + (y1*y3 < 0));
@@ -97,8 +108,8 @@ public class Regula_Falsi {
     }
         
     public static void main(String[] args){
-        Regula_Falsi regula_Falsi = new Regula_Falsi();        
-        String res = regula_Falsi.resolver(3,4,50,0.01);
+        MRF mrf = new MRF();
+        String res = mrf.resolver(3,4,50,0.01);
         System.out.println(res);
     }
 }

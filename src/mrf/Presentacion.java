@@ -77,7 +77,7 @@ public class Presentacion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Regula_Falsi regula_Falsi= new Regula_Falsi();
+        MRF regula_Falsi= new MRF();
         regula_Falsi.fx(5);
         regula_Falsi.resolver(2,3, 20,0.5);
         
