@@ -30,11 +30,7 @@ public class MRF {
     }
        
     
-    /**
-     * Función a resolver
-     * @param x valor de incognita
-     * @return double
-     */
+   
     public double fx(double x){
                //x^3 - 2x^2 + 3x -8 
            net.objecthunter.exp4j.Expression e = new ExpressionBuilder(funcion)
@@ -46,15 +42,7 @@ public class MRF {
            return result;
     }
     
-    /**
-     * @param x1 Limite inferior
-     * @param x2 Limite superior
-     * @param iterations numero de iteraciones
-     * @param err Error permitido
-     * @return String resultado encontrado
-     *                NULL en caso de encontrar algun error
-     *                EMPTY en caso de no hallar convergencia al limite de iteraciones permitidas
-     */
+   
     
     public String resolver(){
         //numDec mumero despues del punto
