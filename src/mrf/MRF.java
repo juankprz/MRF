@@ -28,6 +28,14 @@ public class MRF {
         this.iteration = iteration;
         this.error = error;
     }
+
+    MRF(String F, Double A, Double B, int I, Double E) {
+        this.funcion =F;
+        this.inicial =A;
+        this.fin = B;
+        this.iteration = I;
+        this.error = E;
+    }
        
     
    
